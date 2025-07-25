@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Descubra seu Tipo MBTI 💫</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #fffaf5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .container {
+      max-width: 600px;
+      padding: 20px;
+    }
+    .question {
+      margin-bottom: 30px;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      background-color: #ffc0cb;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #ff99aa;
+    }
+    .result {
+      display: none;
+      margin-top: 30px;
+    }
+    img {
+      max-width: 150px;
+      border-radius: 50%;
+      margin-top: 20px;
+    }
+    .poem {
+      margin-top: 20px;
+      font-style: italic;
+      color: #333;
+    }
+    .whatsapp {
+      margin-top: 30px;
+      background-color: #25D366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Qual seu tipo MBTI? 🧠✨</h1>
+
+    <div class="question" id="question1">
+      <p>1. Qual lugar você prefere para relaxar?</p>
+      <button onclick="choose('I')">Um lugar calmo na natureza 🍃</button>
+      <button onclick="choose('E')">Um barzinho animado com amigos 🍻</button>
+    </div>
+
+    <div class="question" id="question2" style="display:none;">
+      <p>2. O que te inspira mais?</p>
+      <button onclick="choose('N')">Ideias e sonhos ✨</button>
+      <button onclick="choose('S')">Coisas reais e práticas 🛠️</button>
+    </div>
+
+    <div class="question" id="question3" style="display:none;">
+      <p>3. Como você costuma tomar decisões?</p>
+      <button onclick="choose('F')">Com o coração ❤️</button>
+      <button onclick="choose('T')">Com a lógica 🧠</button>
+    </div>
+
+    <div class="question" id="question4" style="display:none;">
+      <p>4. Qual seu estilo de vida?</p>
+      <button onclick="choose('P')">Deixar a vida me levar 🌊</button>
+      <button onclick="choose('J')">Planejado e organizado 📅</button>
+    </div>
+
+    <div class="result" id="result">
+      <h2>Resultado do teste 💌</h2>
+      <p id="mbtiResult"></p>
+      <p class="poem">
+        Seus olhos brilham mais do que qualquer estrela,<br>
+        Seu sorriso é o começo do meu poema.<br>
+        E cada resposta sua...<br>
+        Foi, na verdade, um roteiro para um encontro nosso 🌹
+      </p>
+	<br/>
+<p class="poem2">
+        P.S.: Também temos uns assuntos inacabados daquela nossa última saída, né? ks
+      </p>
+      <img src="Amanda.jpeg" alt="Amanda" />
+      <p>Quer transformar esse MBTI em um momento real comigo? 😘</p>
+      <a href="https://wa.me/5565993075499" class="whatsapp">Sim, me chama no WhatsApp!</a>
+    </div>
+  </div>
+
+  <script>
+    const choices = [];
+    let currentQuestion = 1;
+
+    function choose(letter) {
+      choices.push(letter);
+      document.getElementById("question" + currentQuestion).style.display = "none";
+      currentQuestion++;
+      const next = document.getElementById("question" + currentQuestion);
+      if (next) {
+        next.style.display = "block";
+      } else {
+        showResult();
+      }
+    }
+
+    function showResult() {
+      const result = choices.join('');
+      document.getElementById("mbtiResult").innerText = `Você respondeu ${choices.join(', ')}... o que forma o tipo "${result}", mas na verdade... cada resposta era um convite disfarçado.`;
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+</body>
+</html>
