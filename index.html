@@ -102,7 +102,12 @@
       </p>
       <img src="Amanda.jpeg" alt="Amanda" />
       <p>Quer transformar esse MBTI em um momento real comigo? 😘</p>
-      <a href="https://wa.me/5565993075499" class="whatsapp">Sim, me chama no WhatsApp!</a>
+
+      <div style="margin-top: 15px;">
+  <a id="whatsappLink" class="whatsapp" target="_blank">Sim, me chama no WhatsApp!</a>
+  <a id="whatsappNoLink" class="whatsapp" style="background-color: #999; margin-left: 10px;" target="_blank">Não, quem sabe depois</a>
+</div>
+
     </div>
   </div>
 
@@ -123,10 +128,27 @@
     }
 
     function showResult() {
-      const result = choices.join('');
-      document.getElementById("mbtiResult").innerText = `Você respondeu ${choices.join(', ')}... o que forma o tipo "${result}", mas na verdade... cada resposta era um convite disfarçado.`;
-      document.getElementById("result").style.display = "block";
-    }
+  const mbti = choices.join('');
+  const respostas = choices.join(' - ');
+
+  const simMsg = `Oi! Acabei de fazer seu teste MBTI 😄\n\nMinhas respostas foram:\n${respostas}\nTipo MBTI: ${mbti}\n\nE... eu aceito o convite! ❤️`;
+  const naoMsg = `Oi! Acabei de fazer seu teste MBTI 😅\n\nMinhas respostas foram:\n${respostas}\nTipo MBTI: ${mbti}\n\nMas... eu não vou aceitar o convite.`;
+
+  const phoneNumber = '5565993075499';
+
+  // Links codificados
+  const simLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(simMsg)}`;
+  const naoLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(naoMsg)}`;
+
+  // Atualiza os botões
+  document.getElementById("whatsappLink").href = simLink;
+  document.getElementById("whatsappNoLink").href = naoLink;
+
+  // Mostra resultado
+  document.getElementById("mbtiResult").innerText = `Você respondeu ${choices.join(', ')}... o que forma o tipo "${mbti}", mas na verdade... cada resposta era um convite disfarçado.`;
+  document.getElementById("result").style.display = "block";
+}
+
   </script>
 </body>
 </html>
